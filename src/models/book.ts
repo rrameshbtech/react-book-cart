@@ -2,15 +2,18 @@ export class Book {
     id: number;
     isbn: string;
     title: string;
-    author: string;
+    authors: string[];
+    thumbnailUrl: string;
 
     constructor(id: number,
         isbn: string,
         title: string,
-        author: string) {
+        authors: string[],
+        thumbnailUrl: string) {
         this.id = id;
         this.isbn = isbn;
         this.title = title;
-        this.author = author;
+        this.authors = authors;
+        this.thumbnailUrl = thumbnailUrl;
     }
 }
