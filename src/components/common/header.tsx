@@ -1,6 +1,6 @@
 export function Header() {
   return (
-      <header className="header sticky top-0 bg-gray-800 shadow-md flex items-center justify-between px-8 py-3">
+      <header className="header sticky z-50 top-0 bg-gray-800 flex items-center justify-between px-8 py-3">
           <div className="w-3/12 flex justify-start">
           <img src="/favicon.png" alt="Books cart"/>
           <h1 className="px-2 py-1 font-extrabold text-gray-300">
