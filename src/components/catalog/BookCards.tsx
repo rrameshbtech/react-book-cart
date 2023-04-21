@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { Book } from "../../models/book";
 
 export function BookCards({ books }: BookCardsProps) {
@@ -16,11 +17,14 @@ interface BookCardsProps {
 
 function BookCard({ book }: BookCardProps) {
   return (
-    <div className="w-80 mx-10 my-11 transform rounded-lg bg-white duration-300 hover:scale-105 hover:shadow-lg">
+    <Link
+      to={`/books/${book.isbn}`}
+      className="w-80 mx-10 my-11 transform rounded-lg bg-white duration-300 hover:scale-105 hover:shadow-lg"
+    >
       <BookThumbnail url={book.thumbnailUrl} title={book.title} />
       <BookAuthors authors={book.authors} />
       <BookPriceAndRating price={book.price} rating={book.rating} />
-    </div>
+    </Link>
   );
 }
 
