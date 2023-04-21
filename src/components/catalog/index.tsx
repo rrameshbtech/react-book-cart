@@ -1,7 +1,7 @@
 import { Book } from "../../models/book";
 import { Footer } from "../common/footer";
 import { Header } from "../common/header";
-import { BookCards } from "./BookCards";
+import { BookCards } from "./book-cards";
 
 export function Catalog({ items }: CatalogProps) {
   return (
