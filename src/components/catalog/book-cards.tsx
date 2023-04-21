@@ -50,7 +50,7 @@ interface BookThumbnailProps {
   title: string;
 }
 
-function BookAuthors({ authors }: BookAuthorsProps) {
+export function BookAuthors({ authors }: BookAuthorsProps) {
   return (
     <span className="m-4 text-base text-gray-700">
       {authors
@@ -64,10 +64,10 @@ interface BookAuthorsProps {
   authors: string[];
 }
 
-function BookPriceAndRating({ price, rating }: BookPriceAndRatingProps) {
+export function BookPriceAndRating({ price, rating }: BookPriceAndRatingProps) {
   return (
     <div className="flex m-4">
-      <p className="text-base font-medium text-gray-500">₹{price}</p>
+      <p className="text-base font-bold text-gray-700">₹{price}</p>
       <div className="ml-auto flex items-center">
         <RatingStar rating={rating} />
       </div>
