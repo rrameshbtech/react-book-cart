@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import "./App.css";
 import { Catalog } from "./components/catalog";
-import { getBooks } from "./clients/catalog.api";
+import { getBooks } from "./clients/books.api";
 import { Book } from "./models/book";
 import { BrowserRouter as Router, Route, Routes, Navigate } from "react-router-dom";
 import { BookDetails } from "./components/details";
