@@ -3,6 +3,8 @@ import { redirect, useParams } from "react-router-dom";
 import { getBook } from "../../clients/books.api";
 import { DetailedBook } from "../../models/detailed-book";
 import { BookAuthors, BookPriceAndRating } from "../catalog/book-cards";
+import { Thumbnail } from "../common/book-thumbnail";
+import { BookTitle } from "../common/book-title";
 
 export function BookDetails() {
   let { isbn } = useParams();
@@ -15,9 +17,12 @@ export function BookDetails() {
     getBook(isbn).then((books) => setBook(books[0]));
   }, []);
 
+  if (!book) {
+    return <NoValidBookError />;
+  }
   return (
     <div className="flex flex-col justify-between">
-      {book ? <ValidBookDetails book={book} /> : <NoValidBookError />}
+      <ValidBookDetails book={book} />
     </div>
   );
 }
@@ -29,9 +34,11 @@ function NoValidBookError() {
 function ValidBookDetails({ book }: ValidBookDetailsProbs) {
   return (
     <div className="container mx-auto flex flex-wrap">
-      <BookImages book={book}></BookImages>
+      <div className="px-16 pt-16 pb-4 md:p-4 w-full md:w-1/4 ">
+        <Thumbnail url={book.thumbnailUrl} title={book.title} size="large" ></Thumbnail>
+      </div>
       <div className="lg:w-1/2 w-full lg:pl-10 lg:py-6 mt-6 lg:mt-0 text-left">
-        <BookTitle book={book} />
+        <BookTitle title={book.title} size="large" />
         <BookAuthors authors={book.authors} />
         <BookPriceAndRating price={book.price} rating={book.rating} />
         <BookDescription book={book} />
@@ -41,33 +48,6 @@ function ValidBookDetails({ book }: ValidBookDetailsProbs) {
 }
 
 interface ValidBookDetailsProbs {
-  book: DetailedBook;
-}
-
-function BookTitle({ book }: BookTitleProbs) {
-  return (
-    <h1 className="text-gray-900 text-3xl title-font font-medium mb-1 m-4">
-      {book.title}
-    </h1>
-  );
-}
-interface BookTitleProbs {
-  book: DetailedBook;
-}
-
-function BookImages({ book }: BookImagesProps) {
-  return (
-    <div className="px-16 pt-16 pb-4 md:p-4 w-full md:w-1/4 ">
-      <img
-        className="w-full object-contain"
-        src={book.thumbnailUrl}
-        alt={book.title}
-      ></img>
-    </div>
-  );
-}
-
-interface BookImagesProps {
   book: DetailedBook;
 }
 

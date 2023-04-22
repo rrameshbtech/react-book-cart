@@ -1,5 +1,7 @@
 import { Link } from "react-router-dom";
 import { Book } from "../../models/book";
+import { Thumbnail } from "../common/book-thumbnail";
+import { BookTitle } from "../common/book-title";
 
 export function BookCards({ books }: BookCardsProps) {
   return (
@@ -21,7 +23,8 @@ function BookCard({ book }: BookCardProps) {
       to={`/books/${book.isbn}`}
       className="w-80 mx-10 my-11 transform rounded-lg bg-white duration-300 hover:scale-105 hover:shadow-lg"
     >
-      <BookThumbnail url={book.thumbnailUrl} title={book.title} />
+      <Thumbnail url={book.thumbnailUrl} title={book.title} size="medium" />
+      <BookTitle title={book.title} size="medium" />
       <BookAuthors authors={book.authors} />
       <BookPriceAndRating price={book.price} rating={book.rating} />
     </Link>
@@ -30,24 +33,6 @@ function BookCard({ book }: BookCardProps) {
 
 interface BookCardProps {
   book: Book;
-}
-
-function BookThumbnail({ title, url }: BookThumbnailProps) {
-  return (
-    <>
-      <img
-        className="py-4 h-48 w-full object-contain object-center"
-        src={url}
-        alt={title}
-      ></img>
-      <h2 className="mb-2 text-lg font-medium text-gray-900">{title}</h2>
-    </>
-  );
-}
-
-interface BookThumbnailProps {
-  url: string;
-  title: string;
 }
 
 export function BookAuthors({ authors }: BookAuthorsProps) {
