@@ -12,11 +12,12 @@ import {
 import { BookDetails } from "./components/details";
 import { Header } from "./components/common/header";
 import { Footer } from "./components/common/footer";
+import { CartPreview } from "./components/cart";
 
 function App() {
   const emptyBooks = [] as Book[];
   const [books, setBooks] = useState<Book[]>(emptyBooks);
-
+  const [isCartVisible, setIsCartVisible] = useState(false);
   useEffect(() => {
     getBooks().then(setBooks);
   }, []);
@@ -24,7 +25,8 @@ function App() {
   return (
     <Router>
       <div className="App">
-        <Header />
+        <CartPreview isVisible={isCartVisible} onCartCloseClick={hideCart} />
+        <Header onCartClick={showCart} />
         <Routes>
           <Route path="/books/:isbn" element={<BookDetails />}></Route>
           <Route
@@ -37,6 +39,13 @@ function App() {
       </div>
     </Router>
   );
+
+  function showCart() {
+    setIsCartVisible(true);
+  }
+  function hideCart() {
+    setIsCartVisible(false);
+  }
 }
 
 export default App;
