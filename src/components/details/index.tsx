@@ -1,6 +1,4 @@
 import { useEffect, useState } from "react";
-import { Footer } from "../common/footer";
-import { Header } from "../common/header";
 import { redirect, useParams } from "react-router-dom";
 import { getBook } from "../../clients/books.api";
 import { DetailedBook } from "../../models/detailed-book";
@@ -18,10 +16,8 @@ export function BookDetails() {
   }, []);
 
   return (
-    <div className="flex flex-col h-screen justify-between">
-      <Header />
+    <div className="flex flex-col justify-between">
       {book ? <ValidBookDetails book={book} /> : <NoValidBookError />}
-      <Footer />
     </div>
   );
 }
