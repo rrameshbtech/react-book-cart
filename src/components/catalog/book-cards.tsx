@@ -5,7 +5,7 @@ export function BookCards({ books }: BookCardsProps) {
   return (
     <div className="flex flex-wrap overflow-y-auto justify-center">
       {books.map((book) => (
-        <BookCard {...{ book }} />
+        <BookCard key={book.id} {...{ book }} />
       ))}
     </div>
   );
@@ -81,7 +81,13 @@ interface BookPriceAndRatingProps {
 }
 
 function RatingStar({ rating }: ratingStarProps) {
-  return <>{Array.from({ length: rating }).map(StarImage)}</>;
+  return (
+    <>
+      {Array.from(Array(rating).keys()).map((value) => (
+        <StarImage key={value}></StarImage>
+      ))}
+    </>
+  );
 }
 
 interface ratingStarProps {
