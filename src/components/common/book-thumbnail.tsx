@@ -1,6 +1,6 @@
 export function Thumbnail({ url, title, size }: BookThumbnailProps) {
     const sizeClasses = {
-        "small": "h-32",
+        "small": "h-20",
         "medium": "h-48",
         "large": ""
     }

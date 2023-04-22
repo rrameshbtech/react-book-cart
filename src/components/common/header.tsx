@@ -14,7 +14,7 @@ interface HeaderProps {
 
 function Navigation({ onCartClick }: NavigationProps) {
   return (
-    <div className="w-3/12 flex justify-end gap-x-1">
+    <div className="w-3/12 flex justify-end gap-x-1 items-center">
       <FinderIcon />
       <CartIcon onClick={onCartClick} />
       <UserIcon />
@@ -31,8 +31,8 @@ function UserIcon() {
       className="cursor-pointer"
       xmlns="http://www.w3.org/2000/svg"
       fill="#ffffff"
-      width="28px"
-      height="28px"
+      width="32px"
+      height="32px"
       viewBox="0 0 32 32"
       version="1.1"
     >
@@ -89,7 +89,7 @@ function FinderIcon() {
 
 function Logo() {
   return (
-    <Link to={"/"} className="w-3/12 flex justify-start">
+    <Link to={"/"} className="w-3/12 flex justify-start items-center">
       <img src="/favicon.png" alt="Books cart" />
       <h1 className="px-2 py-1 font-extrabold text-gray-300">Books Cart</h1>
     </Link>

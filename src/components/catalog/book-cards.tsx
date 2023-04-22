@@ -35,9 +35,9 @@ interface BookCardProps {
   book: Book;
 }
 
-export function BookAuthors({ authors }: BookAuthorsProps) {
+export function BookAuthors({ authors, size }: BookAuthorsProps) {
   return (
-    <span className="m-4 text-base text-gray-700">
+    <span className={`${size === "small" ? "text-xs text-left" : "m-4 text-base"} text-gray-700`}>
       {authors
         .reduce((authors, author) => authors + ", " + author, "")
         .slice(2)}
@@ -47,6 +47,7 @@ export function BookAuthors({ authors }: BookAuthorsProps) {
 
 interface BookAuthorsProps {
   authors: string[];
+  size?: "small"
 }
 
 export function BookPriceAndRating({ price, rating }: BookPriceAndRatingProps) {
